@@ -1,0 +1,54 @@
+<script src="./test.js"></script>
+<script src="./person.js"></script>
+
+<input type = "text" name = "cnt" id = "cnt">
+<input type = "button" id = "cntBtn" value = "생성" onclick = "makeTable()">
+<div id = "result_div"></div>
+
+<script>
+    var t = new Test();
+    // t.alertStr("a","b");
+    var p = new Person("혀기",28,"남자","경기도");
+    p.writePersonInfo();
+    p.setName("종혀기");
+    p.writePersonInfo();
+    p.name = "종혁이"; //-> person 안의 this.name 
+    p.play();
+    p.play = function(){
+        alert("자고 있네");
+    }
+    p.play();
+
+    var a = 3;
+    {
+        var a = 4;
+    }
+   // alert(a);
+
+    /*function makeTable(){
+        var cntObj = document.getElementById("cnt");
+        var count = new Number(cntObj.value);
+        var str = "";
+        for(var i = 1; i <= count; i++){
+          //  str += i + " 번 돌고 있습니다. <br>";
+          document.getElementById("result_div").innerHTML += i + " 번 돌고 있습니다. <br>";
+        }
+       // document.getElementById("result_div").innerHTML = str;
+    }*/
+    function makeTable(){
+        var cntObj = document.getElementById("cnt");
+        var count = new Number(cntObj.value);
+        var str = "<table border='1'>";
+        for(var i = 1; i <= count; i++){
+          str += "<tr>";
+          for(var j = 1;j <= count; j++){
+              str += "<td>" + ((( i - 1 ) * 2) + j) + "</td>";
+          }
+          str += "</tr>";
+          
+        }
+        str += "</table>";
+        document.getElementById("result_div").innerHTML = str;
+    }
+
+</script>
